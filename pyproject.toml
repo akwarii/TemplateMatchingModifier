@@ -3,27 +3,34 @@ requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "[[PackageName]]"
-version = "[[Version number]]"
-description = "[[Short description]]"
+name = "TemplateMatchingModifier"
+version = "0.0.1"
+description = "An OVITO modifier that finds the best match between a set of bonding environments and the atomic simulation."
 keywords = ["ovito", "ovito-extension"]
-authors = [{name = "[[Author 1 name]]", email = "[[Author 1 email]]"}, {name = "[[Author 2 name]]", email = "[[Author 2 email]]"}]
-maintainers = [{name = "[[Maintainer 1 name]]", email = "[[Maintainer 1 email]]"}]
-license = {text = "[[License]]"}
+authors = [{ name = "Gael Huynh", email = "gael.huynh@univ-lyon1.fr" }]
+maintainers = [{ name = "Gael Huynh", email = "gael.huynh@univ-lyon1.fr" }]
+license = { text = "MIT License" }
 readme = "README.md"
-requires-python = ">=3.7"
+requires-python = ">=3.9"
 dependencies = [
     "ovito >= 3.9.1",
+    "scipy >= 1.11.3",
+    "numpy >= 1.26.1",
+    "ase >= 3.23.0",
+    "tqdm >= 4.66.1",
 ]
 
 [project.urls]
-repository = "[[Repository Link]]"
+repository = "https://github.com/akwarii/TemplateMatchingModifier"
 
 [project.entry-points.'OVITO.Modifier']
-"[[Human readable modifier name]]" = "[[PackageName]]:[[ModifierName]]"
+"Custom Template Matching" = "TemplateMatchingModifier:TemplateMatchingModifier"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+"" = ["data/*"]
 
 [tool.pytest.ini_options]
 filterwarnings = [
